@@ -2,7 +2,7 @@
 /*
  * Plugin Name: Block Editor Disabler
  * Description: This plugin for disable gutenberg editor for specific role.
- * Version: 1.0.0
+ * Version: 1.0.2
  * Author: khorshedalamwp
  * Author URI: https://profiles.wordpress.org/khorshedalamwp
  * Text Domain: block-editor-disabler

@@ -50,8 +50,9 @@ if ( ! class_exists( 'BEDP_Class_Hooks' ) ) {
 		public function disable_gutenberg_for_all_pages( $use_block_editor, $post_type ) {
 
 			$all_pages = get_option( 'bedp_disable_all_pages' );
+
 			if ( $all_pages === 'yes' ) {
-				if ( $post_type === 'page' ) {
+				if ( $post_type->post_type === 'page' ) {
 					return false;
 				}
 			}
@@ -68,10 +69,11 @@ if ( ! class_exists( 'BEDP_Class_Hooks' ) ) {
 		 */
 		public function disable_gutenberg_for_specific_pages( $use_block_editor, $post ) {
 			$page_slugs = get_option( 'bedp_disable_specific_pages', [] );
-
-			if ( is_object( $post ) && isset( $post->post_name ) ) {
-				if ( in_array( $post->post_name, $page_slugs ) ) {
-					return false;
+			if ( ! empty( $page_slugs ) ) {
+				if ( is_object( $post ) && isset( $post->post_name ) ) {
+					if ( in_array( $post->post_name, $page_slugs ) ) {
+						return false;
+					}
 				}
 			}
 

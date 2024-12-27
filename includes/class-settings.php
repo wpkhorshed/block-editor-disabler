@@ -78,26 +78,26 @@ if ( ! class_exists( 'BEDP_Class_Settings' ) ) {
 			if ( get_option( 'bedp_disable_all' ) === 'yes' ) {
 				$fields = array(
 					'bedp_disable_all' => array(
-						'title'    => esc_html__( 'Enable/Disable', 'block-editor-disabler' ),
+						'title'    => esc_html__( 'Disable All', 'block-editor-disabler' ),
 						'type'     => 'checkbox',
-						'subtitle' => esc_html__( 'Disable for all pages,posts and everything', 'block-editor-disabler' ),
+						'subtitle' => esc_html__( 'Deactivate the Block Editor on Your Website', 'block-editor-disabler' ),
 					),
 				);
 			} elseif ( get_option( 'bedp_disable_all_pages' ) === 'yes' ) {
 				$fields = array(
 					'bedp_disable_all'       => array(
-						'title'    => esc_html__( 'Enable/Disable', 'block-editor-disabler' ),
+						'title'    => esc_html__( 'Disable All', 'block-editor-disabler' ),
 						'type'     => 'checkbox',
-						'subtitle' => esc_html__( 'Disable for all pages, posts and everything', 'block-editor-disabler' ),
+						'subtitle' => esc_html__( 'Deactivate the Block Editor on Your Website', 'block-editor-disabler' ),
 					),
 					'bedp_disable_all_posts' => array(
-						'title'    => esc_html__( 'Enable/Disable', 'block-editor-disabler' ),
+						'title'    => esc_html__( 'All Posts', 'block-editor-disabler' ),
 						'type'     => 'checkbox',
 						'subtitle' => esc_html__( 'Disable all posts only', 'block-editor-disabler' ),
 					),
 
 					'bedp_disable_all_pages' => array(
-						'title'    => esc_html__( 'Enable/Disable', 'block-editor-disabler' ),
+						'title'    => esc_html__( 'All Pages', 'block-editor-disabler' ),
 						'type'     => 'checkbox',
 						'subtitle' => esc_html__( 'Disable all pages only', 'block-editor-disabler' ),
 					),
@@ -105,9 +105,9 @@ if ( ! class_exists( 'BEDP_Class_Settings' ) ) {
 			} else {
 				$fields = array(
 					'bedp_disable_all'       => array(
-						'title'    => esc_html__( 'Enable/Disable', 'block-editor-disabler' ),
+						'title'    => esc_html__( 'Disable All', 'block-editor-disabler' ),
 						'type'     => 'checkbox',
-						'subtitle' => esc_html__( 'Disable for all pages,posts and everything', 'block-editor-disabler' ),
+						'subtitle' => esc_html__( 'Deactivate the Block Editor on Your Website', 'block-editor-disabler' ),
 					),
 					'bedp_disable_all_posts' => array(
 						'title'    => esc_html__( 'All Posts', 'block-editor-disabler' ),
@@ -188,10 +188,10 @@ if ( ! class_exists( 'BEDP_Class_Settings' ) ) {
 				// Ensure the checkbox value is handled as a string
 				$field_value = is_array( $field_value ) ? '' : $field_value;
 				echo '<input type="checkbox" id="' . esc_attr( $field_id ) . '" name="' . esc_attr( $field_id ) . '" value="yes" ' . checked( 'yes', $field_value, false ) . ' /><p>' . esc_html( $subtitle ) . '</p>';
-			} elseif ( $field_type == 'checkboxes' ) {
+			}elseif ( $field_type == 'checkboxes' ) {
 				foreach ( $pages as $slug => $name ) {
 					$checked = in_array( $slug, (array) $field_value ) ? 'checked="checked"' : ''; ?>
-                    <input type="checkbox" id="<?php echo esc_attr( $slug ); ?>" name="bedp_disable_specific_pages[]" value="<?php echo esc_attr( $slug ); ?>" <?php echo esc_html($checked); ?>>
+                    <input type="checkbox" id="<?php echo esc_attr( $slug ); ?>" name="bedp_disable_specific_pages[]" value="<?php echo esc_attr( $slug ); ?>" <?php echo esc_html( $checked ); ?>>
                     <label for="<?php echo esc_attr( $slug ); ?>"><?php echo esc_html( $name ); ?></label><br>
 				<?php }
 			} else {
